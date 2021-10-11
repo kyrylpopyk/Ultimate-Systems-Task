@@ -1,0 +1,20 @@
+.header{
+    display: grid;
+    grid-template-columns: 80% 20%;
+    position: relative;
+}
+
+.title{
+    align-self: center;
+    font-size: 40px;
+    padding-left: 20px;
+    color: #FF9900;
+}
+
+.loginStatus{
+    justify-self: end;
+    padding-right: 50px;
+    align-self: center;
+    height: 60%;
+    position: absolute;
+}

@@ -1,16 +1,21 @@
+const SET_LOGIN_STATUS = "SET_LOGIN_STATUS";
+
 let initialState = {
-    userName: "",
-    email: "",
-    password: ""
+    isLogged: false
 }
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
-        case value:
-            
-            break;
-    
+        case SET_LOGIN_STATUS:
+            return{
+                ...state,
+                isLogged: action.body
+            }
         default:
-            break;
+            return state;
     }
 }
+
+export const setUserStatus = (isLogged) => ({type: SET_LOGIN_STATUS, body: isLogged});
+
+export default userReducer;

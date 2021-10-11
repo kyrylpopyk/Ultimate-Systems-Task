@@ -6,7 +6,7 @@ const AppContainer = styled.div`
     height: 100vh;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 100%;
+    grid-template-rows: 10% 90%;
 `;
 
 export default AppContainer;
