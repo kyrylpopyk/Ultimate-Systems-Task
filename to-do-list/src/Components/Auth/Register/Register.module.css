@@ -1,0 +1,88 @@
+.registerTitle{
+    justify-self: center;
+    align-self: flex-start;
+    color: #FF9900;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: default;
+}
+
+.registerForm{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 4fr;
+}
+
+.registerForm > div{
+    width: 100%;
+    display: grid;
+}
+
+input[type=text]:focus {
+    outline: none;
+}
+
+input[type=text] {
+    color: black;
+    box-sizing: content-box;
+    border-radius: 5px;
+    border: 0px;
+    height: 25px;
+    justify-self: center;
+    align-self: center;;
+    width: 70%;
+    padding-left: 10px;
+    box-sizing: border-box;
+    align-self: center;
+}
+
+.additional{
+    justify-self: center;
+    color: white;
+    align-self: center;
+    cursor: default;
+}
+
+.registerBtn{
+    justify-self: center;
+    align-self: flex-start;
+    width: 50%;
+    height: 50px;
+    border-radius: 5px;
+    border: 0px;
+    background-color: #FF9900;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 30px;
+    font-size: 20px;
+    transition: 1s;
+}
+
+
+.registerBtn:hover{
+    color: #FF9900;
+    background-color: white;
+}
+.loginCreate{
+    justify-self: center;
+    top: 10%;
+    color: #FF9900;
+    text-decoration: none;
+    font-size: 30px;
+    margin-top: 30px;
+}
+
+.backImage{
+    align-self: center;
+    padding-left: 5%;
+    transform: scale(1, 1);
+    transition: 0.5s;
+    cursor: pointer;
+}
+.backImage:hover{
+    transform: scale(1.4, 1.4);
+}
+
+.backBtn{
+    display: grid;
+}
