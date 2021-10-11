@@ -1,16 +1,15 @@
 import AuthForm from "../../Library/AuthForm.style.js";
 import style from "./Login.module.css";
 import {NavLink} from "react-router-dom";
-import { Field, reduxForm } from "redux-form";
 
 const LoginForm = (props) => {
     return(
-        <form className={style.loginForm} onSubmit={props.handleSubmit}>
+        <form className={style.loginForm} >
             <div>
-                <Field component={"input"} type="text" name={"userName"} placeholder="Email or Username"></Field>
+                <input type="text" name={"userName"} placeholder="Email or Username"></input>
             </div>
             <div>
-                <Field component={"input"} type="text" name={"password"} placeholder="Password"></Field>
+                <input component={"input"} type="text" name={"password"} placeholder="Password"></input>
             </div>
             <div>
                 <button className={style.loginBtn}>Login</button>
@@ -25,12 +24,7 @@ const LoginForm = (props) => {
     );
 }
 
-const LoginReduxForm = reduxForm({form: "login"})(LoginForm);
-
-const Login = (props) => {
-    let onSubmit = (formData) => {
-        console.log(formData);
-    }
+const Login = () => {
 
     return(
         <AuthForm
@@ -39,7 +33,7 @@ const Login = (props) => {
             rows="3fr 8fr">
 
             <div className={style.loginTitle}>Login</div>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginForm />
         </AuthForm>
     );
 }
