@@ -13,7 +13,6 @@ class HeaderComponent extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    debugger
     return{
         isLogged: state.user.isLogged
     }

@@ -7,7 +7,7 @@ const BoardRouter = () => {
         <div>
             <Switch>
                 <Route exact path="/board" component={Board}/>
-                <Route path="/board/list/:id" component={ToDoList}/>
+                <Route exact path="/board/list/:id" component={ToDoList}/>
             </Switch>
         </div>
     );

@@ -1,7 +1,7 @@
 const SET_LOGIN_STATUS = "SET_LOGIN_STATUS";
 
 let initialState = {
-    isLogged: false
+    isLogged: true
 }
 
 const userReducer = (state = initialState, action) => {

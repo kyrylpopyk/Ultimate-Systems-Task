@@ -13,8 +13,14 @@
 
 .loginStatus{
     justify-self: end;
-    padding-right: 50px;
+    margin-right: 30px;
     align-self: center;
     height: 60%;
     position: absolute;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.loginStatus:hover{
+    transform: scale(1.2,1.2);
 }
