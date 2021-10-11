@@ -1,6 +1,6 @@
 import { Switch, Route, Redirect } from "react-router";
 import Register from './Register/Register';
-import Login from './Login/Login';
+import LoginContainer from "./Login/LoginContainer";
 
 const AuthRouter = () => {
     return(
@@ -9,7 +9,7 @@ const AuthRouter = () => {
             <Redirect to="/auth/login" />
         </Route>
         <Route exact path="/auth/login">
-            <Login />
+            <LoginContainer />
         </Route>
         <Route exact path="/auth/register">
             <Register />
