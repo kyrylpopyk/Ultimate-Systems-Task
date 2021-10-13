@@ -1,18 +1,21 @@
 import AuthForm from "../../Library/AuthForm.style.js";
 import style from "./Login.module.css";
 import {NavLink} from "react-router-dom";
+import { useState } from "react";
 
 const LoginForm = (props) => {
+    let [login, setLogin] = useState("");
+    let [password, setPassword] = useState("");
     return(
-        <form className={style.loginForm} >
+        <div className={style.loginForm}>
             <div>
-                <input type="text" name={"userName"} placeholder="Email or Username"></input>
+                <input value={login} type="text" name={"userName"} placeholder="Email or Username" onChange={(e) => setLogin(e.target.value)}></input>
             </div>
             <div>
-                <input component={"input"} type="text" name={"password"} placeholder="Password"></input>
+                <input value={password} component={"input"} type="text" name={"password"} placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
             </div>
             <div>
-                <button className={style.loginBtn}>Login</button>
+                <button onClick={() => props.getUser(login, password)} className={style.loginBtn}>Login</button>
             </div>
             <div>
                 <span className={style.additional}>or</span>
@@ -20,11 +23,11 @@ const LoginForm = (props) => {
             <div>
                 <NavLink to="/auth/register" className={style.loginCreate}>Create an account</NavLink>
             </div>
-        </form>
+        </div>
     );
 }
 
-const Login = () => {
+const Login = (props) => {
 
     return(
         <AuthForm
@@ -33,7 +36,7 @@ const Login = () => {
             rows="3fr 8fr">
 
             <div className={style.loginTitle}>Login</div>
-            <LoginForm />
+            <LoginForm getUser={props.getUser}/>
         </AuthForm>
     );
 }

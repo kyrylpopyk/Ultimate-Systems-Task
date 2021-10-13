@@ -1,21 +1,67 @@
-const SET_LOGIN_STATUS = "SET_LOGIN_STATUS";
+import { userApi } from "../../api/UserApi";
+
+const SET_USER = "SET_USER";
+const SET_FETCHING = "SET_FETCHING";
 
 let initialState = {
-    isLogged: true
+    isAuth: false,
+    user: "",
+    isFetching: false
 }
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_LOGIN_STATUS:
+        case SET_USER:
             return{
                 ...state,
-                isLogged: action.body
+                user: action.body,
+                isAuth: true
+            }
+        case SET_FETCHING:
+            return{
+                ...state,
+                isFetching: action.body
             }
         default:
             return state;
     }
 }
 
-export const setUserStatus = (isLogged) => ({type: SET_LOGIN_STATUS, body: isLogged});
+//Actions
+const setUser = (user) => ({type: SET_USER, body: user});
+export const setFetchng = (fetching) => ({type: SET_FETCHING, body: fetching});
+
+//Middleware
+export const getUser = (login, password) => {
+    return (dispatch) => {
+        dispatch(setFetchng(true));
+        userApi.loginUser(login, password)
+        .then( data => {
+            if("jwt" in data){
+                localStorage.setItem("token",data.jwt);
+                dispatch(setUser(data.user.username))
+            }
+            dispatch(setFetchng(false));
+        });
+    }
+}
+
+export const createUser = (username, email, password) => {
+    return (dispatch) => {
+        dispatch(setFetchng(true));
+        userApi.registerUser(username, email, password)
+        .then( data => {
+            debugger;
+            if("jwt" in data){
+                debugger;
+                localStorage.setItem("token",data.jwt);
+                dispatch(setUser(data.user.username))
+            }
+        })
+        dispatch(setFetchng(false));
+    }
+}
+
+
 
 export default userReducer;

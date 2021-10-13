@@ -1,10 +1,28 @@
+import { connect } from "react-redux";
 import Login from "./Login";
+import { getUser } from "../../../redux/reducers/userReducer";
+import { withAuthRedirect } from "../../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
-const LoginContainer = () => {
+const LoginComponent = (props) => {
 
     return(
-        <Login />
+        <Login
+        isFetching={props.isFetching} 
+        isAuth={props.isAuth} user={props.user}
+        getUser={props.getUser}/>
     );
 };
 
-export default LoginContainer;
+const mapStateToProps = (state) => {
+    return ({
+        user: state.user.user,
+        isAuth: state.user.isAuth,
+        isFetching: state.user.isFetching
+    })
+}
+
+export default compose(
+    withAuthRedirect,
+    connect(mapStateToProps, {getUser}
+))(LoginComponent);

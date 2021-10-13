@@ -1,0 +1,164 @@
+.toDoList{
+    width: 800px;
+    height: 80vh;
+    position: fixed;
+    background-color: #2D2D2D;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-rows: 10% 80% 10%;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.title{
+    border-bottom: 3px solid #FF9900;
+    display: grid;
+}
+
+.titleContent{
+    align-self: flex-start;
+    background-color: white;
+    box-sizing: border-box;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    font-weight: 800;
+    color: black;
+    cursor: default;
+}
+
+.tasks{
+    padding-top: 20px;
+    box-sizing: border-box;
+    display: grid;
+    grid-auto-rows: minmax(min-content, max-content);
+    row-gap: 20px;
+}
+
+.task{
+    height: 40px;
+    display: grid;
+    grid-template-columns: 10% 90%;
+}
+
+.taskCheckBox{
+    position: relative;
+}
+
+.taskCheckBoxEmpty{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    box-sizing: border-box;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.taskCheckBoxActive::after{
+    content: "";
+    width: 7px;
+    height: 17px;
+    border-bottom: 2px solid #06E40E;
+    border-right: 2px solid #06E40E;
+    transform: translate(-20%, -80%) rotate(45deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    box-sizing: border-box;
+}
+
+.taskTitle{
+    border-bottom: 1px solid #FF9900;
+    display: grid;
+}
+
+.taskTitleContent{
+    align-self: center;
+    color: white;
+    font-weight: 500;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+.tasksActionsBtns{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: end;
+    height: 30px;
+    column-gap: 30px;
+}
+
+.tasksActionsBtns button{
+    width: 100px;
+    border-radius: 10px;
+    border: 0;
+    box-shadow: 2px 2px 5px rgb(0, 0, 0);
+    color: white;
+    font-weight: 800;
+    transition: 0.5s;
+}
+
+.tasksCancelBtn{
+    background-color: #FF3D00;
+}
+
+.tasksCancelBtn:hover{
+    color: #FF3D00;
+    background-color: white;
+}
+
+.tasksAddBtn{
+    background-color: #FF9900;
+}
+
+.tasksAddBtn:hover{
+    color: #FF9900;
+    background-color: white;
+}
+
+.toDoListActionsBtns{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.toDoListActionsBtns button{
+    width: 150px;
+    font-size: 20px;
+    align-self: center;
+    height: 60%;
+    transition: 0.5s;
+}
+
+.toDoListCancelBtn{
+    justify-self: start;
+    background-color: unset;
+    border: 0;
+    font-weight: 900;
+    color: #FF9900;
+}
+
+.toDoListCancelBtn:hover{
+    color: white;
+}
+
+.toDoListSaveBtn{
+    justify-self: end;
+    border-radius: 7px;
+    border: 0;
+    background-color: #FF9900;
+    color: white;
+    box-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
+
+.toDoListSaveBtn:hover{
+    background-color: white;
+    color: #FF9900;
+}
+
+button{
+    cursor: pointer;
+}

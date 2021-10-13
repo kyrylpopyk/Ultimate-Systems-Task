@@ -3,6 +3,7 @@
     margin: 0 20% 0 20%;
     display: grid;
     grid-template-rows: 100px auto;
+    filter: blur(8px);
 }
 
 .filters{

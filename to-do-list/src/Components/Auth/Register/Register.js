@@ -1,30 +1,41 @@
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import AuthForm from "../../Library/AuthForm.style";
 import style from "./Register.module.css";
 
-const RegisterForm = () => {
+const RegisterForm = (props) => {
+    let [username, setUsername] = useState("");
+    let [email, setEmail] = useState("");
+    let [password, setPassword] = useState("");
+    let [repeatPassword, setRepeatPassword] = useState("");
+
+    const submit = (username, email, password, repeatPassword) => {
+        debugger;
+        password === repeatPassword && props.createUser(username, email, password);
+    }
+    
     return(
-        <form className={style.registerForm}>
+        <div className={style.registerForm}>
             <div>
-                <input type="text" name={"userName"} placeholder="Username"></input>
+                <input onChange={(e) => {setUsername(e.target.value)}} value={username} type="text" name={"userName"} placeholder="Username"></input>
             </div>
             <div>
-                <input type="text" name={"email"} placeholder="Email"></input>
+                <input onChange={(e) => {setEmail(e.target.value)}} value={email} type="text" name={"email"} placeholder="Email"></input>
             </div>
             <div>
-                <input type="text" name={"password"} placeholder="Password"></input>
+                <input onChange={(e) => {setPassword(e.target.value)}} value={password} type="text" name={"password"} placeholder="Password"></input>
             </div>
             <div>
-                <input type="text" name={"repeatPassword"} placeholder="Repeat Password"></input>
+                <input onChange={(e) => {setRepeatPassword(e.target.value)}} value={repeatPassword} type="text" name={"repeatPassword"} placeholder="Repeat Password"></input>
             </div>
             <div>
-                <button className={style.registerBtn}>Create</button>
+                <button onClick={() => {submit(username, email, password, repeatPassword)}} className={style.registerBtn}>Create</button>
             </div>
-        </form>
+        </div>
     );
 }
 
-const Register = () => {
+const Register = (props) => {
 
     const history = useHistory();
 
@@ -43,7 +54,7 @@ const Register = () => {
             </div>
 
             <div className={style.registerTitle}>Create a new account</div>
-            <RegisterForm />
+            <RegisterForm createUser={props.createUser}/>
         </AuthForm>
     )
 }
