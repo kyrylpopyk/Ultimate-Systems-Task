@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/react-ultimate-systems-alpha/static/css/main.ec0c54b7.chunk.css",
+    "main.js": "/react-ultimate-systems-alpha/static/js/main.f7c6120e.chunk.js",
+    "main.js.map": "/react-ultimate-systems-alpha/static/js/main.f7c6120e.chunk.js.map",
+    "runtime-main.js": "/react-ultimate-systems-alpha/static/js/runtime-main.23b06dcd.js",
+    "runtime-main.js.map": "/react-ultimate-systems-alpha/static/js/runtime-main.23b06dcd.js.map",
+    "static/js/2.f64cb358.chunk.js": "/react-ultimate-systems-alpha/static/js/2.f64cb358.chunk.js",
+    "static/js/2.f64cb358.chunk.js.map": "/react-ultimate-systems-alpha/static/js/2.f64cb358.chunk.js.map",
+    "index.html": "/react-ultimate-systems-alpha/index.html",
+    "static/css/main.ec0c54b7.chunk.css.map": "/react-ultimate-systems-alpha/static/css/main.ec0c54b7.chunk.css.map",
+    "static/js/2.f64cb358.chunk.js.LICENSE.txt": "/react-ultimate-systems-alpha/static/js/2.f64cb358.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.23b06dcd.js",
+    "static/js/2.f64cb358.chunk.js",
+    "static/css/main.ec0c54b7.chunk.css",
+    "static/js/main.f7c6120e.chunk.js"
+  ]
+}
