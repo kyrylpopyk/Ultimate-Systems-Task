@@ -79,9 +79,27 @@
 .taskTitleContent{
     align-self: center;
     color: white;
-    font-weight: 500;
+    font-weight: 800;
     padding-left: 10px;
     box-sizing: border-box;
+    justify-self: start;
+    font-size: 16px;
+}
+
+.taskTitleInput{
+    width: 100%;
+    color: white;
+    background-color: #2D2D2D;
+    font-weight: 800;
+    border: unset;
+    padding-left: 10px;
+    align-self: center;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.taskTitleInput:focus{
+    outline: unset;
 }
 
 .tasksActionsBtns{

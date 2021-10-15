@@ -1,13 +1,34 @@
 import style from "./Board.module.css";
 import { useState } from "react";
-import ToDoList from "./ToDoList/ToDoList";
+import ToDoListContainer from "./ToDoList/ToDoListContainer";
 
-const Board = () => {
+const Board = (props) => {
     
     let [isOpen, setOpen] = useState(false);
 
     const openCloseSort = () => {
         isOpen ? setOpen(false) : setOpen(true);
+    }
+
+    const RenderLists = () => {
+        return(
+            props.toDoLists.map( list => (
+                <div className={style.list} key={list.id} onClick={() => openList(list)}>
+                    <div className={style.listName}>{list.name}</div>
+                    <div className={style.listCreationDate}>Created at: {list.created_at.split("T")[0]}</div>
+                    <div className={style.listTaskTypes}>
+                        <div className={style.listTaskComplited}>Compleated: {list.task.filter( task => task.isDone === true).length}</div>
+                        <div className={style.listTaskUncomplited}>Uncomplited: {list.task.filter( task => task.isDone === false).length}</div>
+                        <div className={style.listTaskAll}>All: {list.task.length}</div>
+                    </div>
+                </div>
+            ))
+        );
+    }
+
+    const openList = (listData) => {
+        props.setOpenList(JSON.parse(JSON.stringify(listData)));
+        props.setIsOpenList(true);
     }
 
     return(
@@ -31,22 +52,14 @@ const Board = () => {
                     </div>
                 </div>
                 <div className={style.lists}>
-                    <div className={style.list}>
-                        <div className={style.listName}>Name</div>
-                        <div className={style.listCreationDate}>Created at: 18-03-2021</div>
-                        <div className={style.listTaskTypes}>
-                            <div className={style.listTaskComplited}>Compleated: 10</div>
-                            <div className={style.listTaskUncomplited}>Uncomplited: 5</div>
-                            <div className={style.listTaskAll}>All: 15</div>
-                        </div>
-                    </div>
+                    {props.toDoLists.length > 0 && <RenderLists />}
                 </div>
 
                 <div className={style.boardAdd}>
                     <img className={style.boardAddImg} alt="" src={process.env.PUBLIC_URL + "/plusOrange.png"}/>
                 </div>
             </div>
-            <ToDoList />
+            {props.isOpenList && <ToDoListContainer />}
         </div>
     );
 }

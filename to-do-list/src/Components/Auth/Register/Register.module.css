@@ -17,11 +17,11 @@
     display: grid;
 }
 
-input[type=text]:focus {
+.registerForm input[type=text]:focus {
     outline: none;
 }
 
-input[type=text] {
+.registerForm input[type=text] {
     color: black;
     box-sizing: content-box;
     border-radius: 5px;

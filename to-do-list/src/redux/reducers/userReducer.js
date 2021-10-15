@@ -1,4 +1,4 @@
-import { userApi } from "../../api/UserApi";
+import { userApi } from "../../api/userApi.js";
 
 const SET_USER = "SET_USER";
 const SET_FETCHING = "SET_FETCHING";
@@ -55,13 +55,11 @@ export const createUser = (username, email, password) => {
             if("jwt" in data){
                 debugger;
                 localStorage.setItem("token",data.jwt);
-                dispatch(setUser(data.user.username))
+                dispatch(setUser(data.user.username));
+                dispatch(setFetchng(false));
             }
         })
-        dispatch(setFetchng(false));
     }
 }
-
-
 
 export default userReducer;

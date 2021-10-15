@@ -18,11 +18,11 @@
     display: grid;
 }
 
-input[type=text]:focus {
+.loginForm input[type=text]:focus {
     outline: none;
 }
 
-input[type=text] {
+.loginForm input[type=text] {
     color: black;
     box-sizing: content-box;
     border-radius: 5px;

@@ -3,7 +3,6 @@
     margin: 0 20% 0 20%;
     display: grid;
     grid-template-rows: 100px auto;
-    filter: blur(8px);
 }
 
 .filters{
@@ -106,11 +105,20 @@
     color: white;
 }
 
+.listName{
+    align-self: center;
+}
+
+.listCreationDate{
+    align-self: center;
+}
+
 .listTaskTypes{
     display: grid;
     grid-template-columns: auto auto auto;
     justify-content: center;
     column-gap: 10px;
+    align-self: center;
 }
 
 .boardAdd{
