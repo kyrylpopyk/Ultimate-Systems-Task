@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/Ultimate-Systems-Task/static/css/main.ec0c54b7.chunk.css",
-    "main.js": "/Ultimate-Systems-Task/static/js/main.625d5e21.chunk.js",
-    "main.js.map": "/Ultimate-Systems-Task/static/js/main.625d5e21.chunk.js.map",
+    "main.css": "/Ultimate-Systems-Task/static/css/main.dd075226.chunk.css",
+    "main.js": "/Ultimate-Systems-Task/static/js/main.114ddd18.chunk.js",
+    "main.js.map": "/Ultimate-Systems-Task/static/js/main.114ddd18.chunk.js.map",
     "runtime-main.js": "/Ultimate-Systems-Task/static/js/runtime-main.1d91e0d9.js",
     "runtime-main.js.map": "/Ultimate-Systems-Task/static/js/runtime-main.1d91e0d9.js.map",
     "static/js/2.1ac065f9.chunk.js": "/Ultimate-Systems-Task/static/js/2.1ac065f9.chunk.js",
     "static/js/2.1ac065f9.chunk.js.map": "/Ultimate-Systems-Task/static/js/2.1ac065f9.chunk.js.map",
     "index.html": "/Ultimate-Systems-Task/index.html",
-    "static/css/main.ec0c54b7.chunk.css.map": "/Ultimate-Systems-Task/static/css/main.ec0c54b7.chunk.css.map",
+    "static/css/main.dd075226.chunk.css.map": "/Ultimate-Systems-Task/static/css/main.dd075226.chunk.css.map",
     "static/js/2.1ac065f9.chunk.js.LICENSE.txt": "/Ultimate-Systems-Task/static/js/2.1ac065f9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.1d91e0d9.js",
     "static/js/2.1ac065f9.chunk.js",
-    "static/css/main.ec0c54b7.chunk.css",
-    "static/js/main.625d5e21.chunk.js"
+    "static/css/main.dd075226.chunk.css",
+    "static/js/main.114ddd18.chunk.js"
   ]
 }
