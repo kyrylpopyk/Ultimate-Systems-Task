@@ -2,22 +2,23 @@ import React from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import Header from "./Header";
+import { setIsAuth } from "../../redux/reducers/userReducer";
 
 class HeaderComponent extends React.Component{
 
     render(){
         return(
-            <Header isLogged={this.props.isLogged}/>
+            <Header {...this.props}/>
         );
     }
 }
 
 const mapStateToProps = (state) => {
     return{
-        isLogged: state.user.isLogged
+        isAuth: state.user.isAuth
     }
 }
 
 export default compose(
-    connect(mapStateToProps, {})
+    connect(mapStateToProps, {setIsAuth})
 )(HeaderComponent);

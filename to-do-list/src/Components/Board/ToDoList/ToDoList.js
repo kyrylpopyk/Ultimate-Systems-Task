@@ -2,13 +2,10 @@ import style from "./ToDoList.module.css";
 
 const ToDoList = (props) => {
 
-    const setTaskStatus = (taskId, newStatus) =>{
-        let newListData = {...props.openList};
+    const setTaskStatus = (task) =>{
+        task.isDone = !task.isDone;
+        let newListData = JSON.parse(JSON.stringify(props.openList));
 
-        newListData.task.map( task => {
-            return task.id === taskId
-            ? task.isDone = newStatus: task;
-        })
         props.setOpenList(newListData);
     };
 
@@ -30,8 +27,8 @@ const ToDoList = (props) => {
 
         return(
             data.tasks.map( task => (
-                <div className={style.task} key={task.id}>
-                    <div className={style.taskCheckBox} onClick={() => { setTaskStatus(task.id, !task.isDone) }}>
+                <div className={style.task} key={ "id" in task ? task.id : `local${data.tasks.indexOf(task)}`}>
+                    <div className={style.taskCheckBox} onClick={() => { setTaskStatus(task) }}>
                         <div className={`${style.taskCheckBoxEmpty} ${task.isDone && style.taskCheckBoxActive}`}></div>
                     </div>
                     <div className={style.taskTitle} onClick={() => setChangeTaskId(task.id)}>
@@ -45,7 +42,7 @@ const ToDoList = (props) => {
             ))
         );
     }
-
+    
     const saveChanges = () => {
         props.updateList(props.openList.id, props.openList);
         props.setIsOpenList(false);
@@ -63,7 +60,7 @@ const ToDoList = (props) => {
             isDone: false
         }
         let newListData = {...props.openList};
-
+        
         newListData.task.push(newTask);
 
         props.setOpenList(newListData);

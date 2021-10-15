@@ -13,7 +13,6 @@ export const userApi = {
             username, email, password 
         })
         .then( response => {
-            debugger;
             return response.data;
         });
     }

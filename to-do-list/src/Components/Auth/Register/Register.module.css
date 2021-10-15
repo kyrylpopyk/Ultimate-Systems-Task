@@ -17,11 +17,11 @@
     display: grid;
 }
 
-.registerForm input[type=text]:focus {
+.registerForm input[type=text]:focus, .registerForm input[type=password]:focus {
     outline: none;
 }
 
-.registerForm input[type=text] {
+.registerForm input[type=text], .registerForm input[type=password] {
     color: black;
     box-sizing: content-box;
     border-radius: 5px;

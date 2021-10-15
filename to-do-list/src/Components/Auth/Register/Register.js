@@ -10,7 +10,6 @@ const RegisterForm = (props) => {
     let [repeatPassword, setRepeatPassword] = useState("");
 
     const submit = (username, email, password, repeatPassword) => {
-        debugger;
         password === repeatPassword && props.createUser(username, email, password);
     }
     
@@ -23,10 +22,10 @@ const RegisterForm = (props) => {
                 <input onChange={(e) => {setEmail(e.target.value)}} value={email} type="text" name={"email"} placeholder="Email"></input>
             </div>
             <div>
-                <input onChange={(e) => {setPassword(e.target.value)}} value={password} type="text" name={"password"} placeholder="Password"></input>
+                <input onChange={(e) => {setPassword(e.target.value)}} value={password} type="password" name={"password"} placeholder="Password"></input>
             </div>
             <div>
-                <input onChange={(e) => {setRepeatPassword(e.target.value)}} value={repeatPassword} type="text" name={"repeatPassword"} placeholder="Repeat Password"></input>
+                <input onChange={(e) => {setRepeatPassword(e.target.value)}} value={repeatPassword} type="password" name={"repeatPassword"} placeholder="Repeat Password"></input>
             </div>
             <div>
                 <button onClick={() => {submit(username, email, password, repeatPassword)}} className={style.registerBtn}>Create</button>

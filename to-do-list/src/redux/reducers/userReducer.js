@@ -2,6 +2,7 @@ import { userApi } from "../../api/userApi.js";
 
 const SET_USER = "SET_USER";
 const SET_FETCHING = "SET_FETCHING";
+const SET_IS_AUTH = "SET_IS_AUTH";
 
 let initialState = {
     isAuth: false,
@@ -22,6 +23,11 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: action.body
             }
+        case SET_IS_AUTH:
+            return {
+                ...state,
+                isAuth: action.body
+            }
         default:
             return state;
     }
@@ -30,6 +36,7 @@ const userReducer = (state = initialState, action) => {
 //Actions
 const setUser = (user) => ({type: SET_USER, body: user});
 export const setFetchng = (fetching) => ({type: SET_FETCHING, body: fetching});
+export const setIsAuth = (isAuth) => ({type: SET_IS_AUTH, body: isAuth});
 
 //Middleware
 export const getUser = (login, password) => {

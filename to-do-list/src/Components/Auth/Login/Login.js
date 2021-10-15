@@ -12,7 +12,7 @@ const LoginForm = (props) => {
                 <input value={login} type="text" name={"userName"} placeholder="Email or Username" onChange={(e) => setLogin(e.target.value)}></input>
             </div>
             <div>
-                <input value={password} component={"input"} type="text" name={"password"} placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
+                <input value={password} component={"input"} type="password" name={"password"} placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
             </div>
             <div>
                 <button onClick={() => props.getUser(login, password)} className={style.loginBtn}>Login</button>

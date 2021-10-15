@@ -18,11 +18,11 @@
     display: grid;
 }
 
-.loginForm input[type=text]:focus {
+.loginForm input[type=text]:focus, .loginForm input[type=password]:focus {
     outline: none;
 }
 
-.loginForm input[type=text] {
+.loginForm input[type=text], .loginForm input[type=password] {
     color: black;
     box-sizing: content-box;
     border-radius: 5px;
