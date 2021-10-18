@@ -11,6 +11,7 @@ const SET_NEW_LIST = "SET_NEW_LIST";
 const SET_CHANGE_LIST_ID = "SET_CHANGE_LIST_ID";
 const REMOVE_LIST = "REMOVE_LIST";
 const SET_SORT_BY = "SET_SORT_BY";
+const RESET_BOARD_REDUCER = "RESET_BOARD_REDUCER";
 
 const initialState = {
     actualSort: "",
@@ -83,6 +84,8 @@ const boardReducer = (state = initialState, action) => {
                 ...state,
                 sortBy: action.body
             }
+        case RESET_BOARD_REDUCER:
+            return initialState;
         default:
             return state;
     }
@@ -102,6 +105,7 @@ export const setIsOpenList = (isOpenList) => ({type:SET_IS_OPEN_LIST, body: isOp
 export const setOpenList = (openListData) => ({type: SET_OPEN_LIST, body: openListData});
 export const setChangeListId = (listId) => ({type: SET_CHANGE_LIST_ID, body: listId});
 export const setsortBy = (sortBy) => ({type: SET_SORT_BY, body: sortBy});
+export const resetBoardReducer = () => ({type: RESET_BOARD_REDUCER});
 
 //Middleware thunks
 export const getLists = (sortBy) => {
