@@ -1,18 +1,22 @@
 import instance from "./instance/boardInstance";
 
+const configuration = () => {
+    return { headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}}
+}
+
 export const boardApi = {
     getLists(sortBy){
-        debugger;
-        return instance.get("to-do-lists", { params : {_sort: sortBy}}).then( response => { debugger; return response.data});
+        return instance.get("to-do-lists", {...configuration(), params : {_sort: sortBy}})
+        .then( response => { return response.data})
+        .catch( e => { console.log(e) });
     },
     updateList(id, changedList){
-        return instance.put(`to-do-lists/${id}`, changedList).then( response => { return response.data})
+        return instance.put(`to-do-lists/${id}`, changedList, configuration()).then( response => { return response.data})
     },
     createNewList(listData){
-        debugger;
-        return instance.post(`to-do-lists/`, listData).then( response => { return response.data})
+        return instance.post(`to-do-lists/`, listData, configuration()).then( response => { return response.data})
     },
     removeList(listId){
-        return instance.delete(`to-do-lists/${listId}`).then( response => { return response.data})
+        return instance.delete(`to-do-lists/${listId}`, configuration()).then( response => { return response.data})
     }
 }

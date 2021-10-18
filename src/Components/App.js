@@ -10,8 +10,8 @@ function App() {
       <Router>
     <HeaderContainer />
       <Switch>
-        <Route path="/Ultimate-Systems-Task">
-          <Redirect to="/auth"></Redirect>
+      <Route exact path="/Ultimate-Systems-Task">
+          <Redirect to="/auth"/>
         </Route>
         <Route exact path="/">
           <Redirect to="/board"/>

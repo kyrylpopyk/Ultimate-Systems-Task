@@ -3,6 +3,7 @@ import { createUser } from "../../../redux/reducers/userReducer"
 import { connect } from "react-redux"
 import { compose } from "redux"
 import { withAuthRedirect } from "../../../hoc/withAuthRedirect"
+import userSelectors from "../../../redux/selectors/userSelectors"
 
 const RegisterComponent = (props) => {
     return(
@@ -15,8 +16,8 @@ const RegisterComponent = (props) => {
 
 const mapStateToProps = (state) => {
     return ({
-        isAuth: state.user.isAuth,
-        isFetching: state.user.isFetching
+        isAuth: userSelectors.getIsAuth(state),
+        isFetching: userSelectors.getIsFetching(state),
     })
 }
 

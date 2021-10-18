@@ -1,8 +1,7 @@
 import * as axios from "axios";
 
 const instance = axios.create({
-    baseURL: "https://recruitment.ultimate.systems/",
-    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+    baseURL: "https://recruitment.ultimate.systems/"
 });
 
 export default instance;
