@@ -1,7 +1,7 @@
 import AuthForm from "../../Library/AuthForm.style.js";
 import style from "./Login.module.css";
 import {NavLink} from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const LoginForm = (props) => {
     let [login, setLogin] = useState("");
@@ -27,7 +27,7 @@ const LoginForm = (props) => {
     );
 }
 
-const Login = (props) => {
+const Login = React.memo((props) => {
 
     return(
         <AuthForm
@@ -39,6 +39,6 @@ const Login = (props) => {
             <LoginForm getUser={props.getUser}/>
         </AuthForm>
     );
-}
+})
 
 export default Login;

@@ -1,6 +1,7 @@
+import React from "react";
 import style from "./ToDoList.module.css";
 
-const ToDoList = (props) => {
+const ToDoList = React.memo((props) => {
 
     const setTaskStatus = (task) =>{
         task.isDone = !task.isDone;
@@ -87,6 +88,6 @@ const ToDoList = (props) => {
             </div>
         </div>
     );
-}
+});
 
 export default ToDoList;

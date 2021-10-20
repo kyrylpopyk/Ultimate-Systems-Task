@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import AuthForm from "../../Library/AuthForm.style";
 import style from "./Register.module.css";
@@ -34,7 +34,7 @@ const RegisterForm = (props) => {
     );
 }
 
-const Register = (props) => {
+const Register = React.memo((props) => {
 
     const history = useHistory();
 
@@ -48,7 +48,7 @@ const Register = (props) => {
             columns="100%"
             rows="1fr 2fr 8fr">
             
-            <div className={style.backBtn}> 
+            <div className={style.backBtn}>
                 <img onClick={BackToLogin} alt="" className={style.backImage} src={process.env.PUBLIC_URL + "/LeftArrow.png"} />
             </div>
 
@@ -56,6 +56,6 @@ const Register = (props) => {
             <RegisterForm createUser={props.createUser}/>
         </AuthForm>
     )
-}
+})
 
 export default Register;

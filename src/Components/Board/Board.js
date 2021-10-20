@@ -1,8 +1,8 @@
 import style from "./Board.module.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import ToDoListContainer from "./ToDoList/ToDoListContainer";
 
-const Board = (props) => {
+const Board = React.memo((props) => {
 
     const sortOptions = {
         name: "name",
@@ -126,6 +126,6 @@ const Board = (props) => {
             {props.isOpenList && <ToDoListContainer />}
         </div>
     );
-}
+})
 
 export default Board;

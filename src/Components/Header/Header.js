@@ -1,6 +1,7 @@
+import React from "react";
 import style from "./Header.module.css";
 
-const Header = (props) => {
+const Header = React.memo((props) => {
 
     const logout = () => {
         props.resetUserReducer();
@@ -14,6 +15,6 @@ const Header = (props) => {
             onClick={ () => logout()}/> }
         </div>
     );
-}
+})
 
 export default Header;
