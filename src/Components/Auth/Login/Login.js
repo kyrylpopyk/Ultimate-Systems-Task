@@ -1,31 +1,7 @@
 import AuthForm from "../../Library/AuthForm.style.js";
 import style from "./Login.module.css";
-import {NavLink} from "react-router-dom";
-import React, { useState } from "react";
-
-const LoginForm = (props) => {
-    let [login, setLogin] = useState("");
-    let [password, setPassword] = useState("");
-    return(
-        <div className={style.loginForm}>
-            <div>
-                <input value={login} type="text" name={"userName"} placeholder="Email or Username" onChange={(e) => setLogin(e.target.value)}></input>
-            </div>
-            <div>
-                <input value={password} component={"input"} type="password" name={"password"} placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
-            </div>
-            <div>
-                <button onClick={() => props.getUser(login, password)} className={style.loginBtn}>Login</button>
-            </div>
-            <div>
-                <span className={style.additional}>or</span>
-            </div>
-            <div>
-                <NavLink to="/auth/register" className={style.loginCreate}>Create an account</NavLink>
-            </div>
-        </div>
-    );
-}
+import React from "react";
+import LoginForm from "./Form/LoginForm.js";
 
 const Login = React.memo((props) => {
 
