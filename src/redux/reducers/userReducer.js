@@ -1,9 +1,9 @@
 import { userApi } from "../../api/userApi.js";
 
-const SET_USER = "SET_USER";
-const SET_FETCHING = "SET_FETCHING";
-const SET_IS_AUTH = "SET_IS_AUTH";
-const RESET_USER_REDUCER = "RESET_USER_REDUCER";
+const SET_USER = "auth/SET_USER";
+const SET_FETCHING = "auth/SET_FETCHING";
+const SET_IS_AUTH = "auth/SET_IS_AUTH";
+const RESET_USER_REDUCER = "auth/RESET_USER_REDUCER";
 
 let initialState = {
     isAuth: false,
@@ -42,35 +42,25 @@ export const setFetchng = (fetching) => ({type: SET_FETCHING, body: fetching});
 export const setIsAuth = (isAuth) => ({type: SET_IS_AUTH, body: isAuth});
 export const resetUserReducer = () => ({type: RESET_USER_REDUCER});
 
-//Middleware
-export const getUser = (login, password) => {
-    return (dispatch) => {
-        dispatch(setFetchng(true));
-        userApi.loginUser(login, password)
-        .then( data => {
-            if("jwt" in data){
-                localStorage.setItem("token",data.jwt);
-                dispatch(setUser(data.user.username))
-            }
-            dispatch(setFetchng(false));
-        });
-    }
+//Middleware thunks
+export const getUser = (identifier, password) => {
+    return async (dispatch) => { workWithUser(dispatch, userApi.loginUser, {identifier, password}) }
 }
 
 export const createUser = (username, email, password) => {
-    return (dispatch) => {
-        dispatch(setFetchng(true));
-        userApi.registerUser(username, email, password)
-        .then( data => {
-            debugger;
-            if("jwt" in data){
-                debugger;
-                localStorage.setItem("token",data.jwt);
-                dispatch(setUser(data.user.username));
-                dispatch(setFetchng(false));
-            }
-        })
+    return async (dispatch) => { workWithUser(dispatch, userApi.registerUser, {username, email, password}) }
+}
+
+//Helpers
+const workWithUser = async (dispatch, apiActionFunc, apiActionFuncProps = {}) => {
+    dispatch(setFetchng(true));
+    let responceData = await apiActionFunc({...apiActionFuncProps})
+
+    if("jwt" in responceData){
+        localStorage.setItem("token", responceData.jwt);
+        dispatch(setUser(responceData.user.username));
     }
+    dispatch(setFetchng(false));
 }
 
 export default userReducer;

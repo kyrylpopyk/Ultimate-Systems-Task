@@ -1,28 +1,28 @@
 import { boardApi } from "../../api/boardApi";
 
-const SET_LISTS = "SET_LISTS";
-const SET_IS_FETCHING = "SET_IS_FETCHING";
-const SET_IS_OPEN_LIST = "SET_IS_OPEN_LIST";
-const SET_OPEN_LIST = "SET_OPEN_LIST";
-const UPDATE_LIST_BY_ID = "UPDATE_LIST_BY_ID";
-const SET_CHANGE_TASK_ID = "SET_CHANGE_TASK_ID";
-const SET_NEW_TASK_SORAGE = "SET_NEW_TASK_SORAGE";
-const SET_NEW_LIST = "SET_NEW_LIST";
-const SET_CHANGE_LIST_ID = "SET_CHANGE_LIST_ID";
-const REMOVE_LIST = "REMOVE_LIST";
-const SET_SORT_BY = "SET_SORT_BY";
-const RESET_BOARD_REDUCER = "RESET_BOARD_REDUCER";
+const SET_LISTS = "board/SET_LISTS";
+const SET_IS_FETCHING = "board/SET_IS_FETCHING";
+const SET_IS_OPEN_LIST = "board/SET_IS_OPEN_LIST";
+const SET_OPEN_LIST = "board/SET_OPEN_LIST";
+const UPDATE_LIST_BY_ID = "board/UPDATE_LIST_BY_ID";
+const SET_CHANGE_TASK_ID = "board/SET_CHANGE_TASK_ID";
+const SET_NEW_TASK_SORAGE = "board/SET_NEW_TASK_SORAGE";
+const SET_NEW_LIST = "board/SET_NEW_LIST";
+const SET_CHANGE_LIST_ID = "board/SET_CHANGE_LIST_ID";
+const REMOVE_LIST = "board/REMOVE_LIST";
+const SET_SORT_BY = "board/SET_SORT_BY";
+const RESET_BOARD_REDUCER = "board/RESET_BOARD_REDUCER";
 
 const initialState = {
     actualSort: "",
-    toDoLists: {},
+    changeTaskId: "",
+    changeListId: "",
+    sortBy: "created_at",
     isFetching: false,
     isOpenList: false,
     openList: {},
-    changeTaskId: "",
-    newTaskStorage: [],
-    changeListId: "",
-    sortBy: "created_at"
+    toDoLists: {},
+    newTaskStorage: []
 }
 
 const boardReducer = (state = initialState, action) => {
@@ -109,45 +109,25 @@ export const resetBoardReducer = () => ({type: RESET_BOARD_REDUCER});
 
 //Middleware thunks
 export const getLists = (sortBy) => {
-    return (dispatch) => {
-        dispatch(setFetchng(true));
-        boardApi.getLists(sortBy)
-        .then( data => {
-            dispatch(setLists(data));
-            dispatch(setFetchng(false));
-        })
-    }
+    return async (dispatch) => { workWithLists(dispatch, boardApi.getLists, {sortBy}, setLists) }
 }
 
 export const updateList = (id, changedList) => {
-    return (dispatch) => {
-        dispatch(setFetchng(true));
-        boardApi.updateList(id, changedList)
-        .then( data => {
-            dispatch(uppdateListById(data));
-            dispatch(setFetchng(false));
-        })
-    }
+    return async (dispatch) => { workWithLists(dispatch, boardApi.updateList, {id, changedList}, uppdateListById) }
 }
 
 export const createNewList = (listData) => {
-    return (dispatch) => {
-        dispatch(setFetchng(true));
-        boardApi.createNewList(listData)
-        .then( data => {
-            dispatch(setNewList(data));
-            dispatch(setFetchng(false));
-        })
-    }
+    return async (dispatch) => { workWithLists(dispatch, boardApi.createNewList, {listData}, setNewList) }
 }
 
 export const removeList = (listId) => {
-    return (dispatch) => {
-        dispatch(setFetchng(true));
-        boardApi.removeList(listId)
-        .then( data => {
-            dispatch(removeListById(data.id));
-            dispatch(setFetchng(false));
-        })
-    }
+    return async (dispatch) => { workWithLists(dispatch, boardApi.removeList, {listId}, removeListById) }
+}
+
+//Helpers
+const workWithLists = async (dispatch, apiFunc, apiFuncParams, actionFunc) => {
+    dispatch(setFetchng(true));
+    let responceData = await apiFunc({...apiFuncParams});
+    dispatch(actionFunc(responceData));
+    dispatch(setFetchng(false));
 }
