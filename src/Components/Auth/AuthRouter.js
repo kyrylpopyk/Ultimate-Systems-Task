@@ -1,6 +1,7 @@
+import React from "react";
 import { Switch, Route, Redirect } from "react-router";
 import LoginContainer from "./Login/LoginContainer";
-import RegisterContainer from "./Register/RegisterContainer";
+let RegisterContainer = React.lazy( () => import("./Register/RegisterContainer"));
 
 const AuthRouter = () => {
     return(
@@ -12,7 +13,9 @@ const AuthRouter = () => {
             <LoginContainer />
         </Route>
         <Route exact path="/auth/register">
-            <RegisterContainer />
+            <React.Suspense fallback={<div>Loading...</div>}>
+                <RegisterContainer />
+            </React.Suspense>
         </Route>
     </Switch>
     );

@@ -8,18 +8,18 @@ function App() {
   return (
     <AppContainer>
       <Router>
-    <HeaderContainer />
-      <Switch>
-      <Route exact path="/Ultimate-Systems-Task">
-          <Redirect to="/auth"/>
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/board"/>
-        </Route>
-        <Route path="/auth" component={AuthRouter}/>
-        <Route path="/board" component={BoardRouter}/>
-      </Switch>
-    </Router>
+        <HeaderContainer />
+        <Switch>
+        <Route exact path="/Ultimate-Systems-Task">
+            <Redirect to="/auth"/>
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/board"/>
+          </Route>
+          <Route path="/auth" component={AuthRouter}/>
+          <Route path="/board" component={BoardRouter}/>
+        </Switch>
+      </Router>
     </AppContainer>
   );
 }

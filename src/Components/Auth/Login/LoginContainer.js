@@ -25,5 +25,5 @@ const mapStateToProps = (state) => {
 
 export default compose(
     withAuthRedirect,
-    connect(mapStateToProps, {getUser}
-))(LoginComponent);
+    connect(mapStateToProps, {getUser})
+)(LoginComponent);

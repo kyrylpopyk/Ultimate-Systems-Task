@@ -33,8 +33,8 @@ const ToDoList = React.memo((props) => {
                         <div className={`${style.taskCheckBoxEmpty} ${task.isDone && style.taskCheckBoxActive}`}></div>
                     </div>
                     <div className={style.taskTitle} onClick={() => setChangeTaskId(task.id)}>
-                        {props.changeTaskId === task.id 
-                        ? <input 
+                        {props.changeTaskId === task.id
+                        ? <input
                             type="text" className={style.taskTitleInput} value={task.name} 
                             onChange={ (e) => setNewTitle(task.id, e.target.value)} autoFocus onBlur={() => setChangeTaskId("")} placeholder="Task name"/>
                         : <div className={style.taskTitleContent}>{task.name}</div>}
